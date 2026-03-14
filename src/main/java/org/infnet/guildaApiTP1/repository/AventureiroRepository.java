@@ -4,8 +4,8 @@ import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
 import org.infnet.guildaApiTP1.enums.ClasseEnum;
 import org.infnet.guildaApiTP1.enums.EspecieEnum;
-import org.infnet.guildaApiTP1.model.Aventureiro;
-import org.infnet.guildaApiTP1.model.Companheiro;
+import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
+import org.infnet.guildaApiTP1.model.aventura_schema.Companheiro;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

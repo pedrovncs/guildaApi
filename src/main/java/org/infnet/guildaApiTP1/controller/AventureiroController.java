@@ -9,7 +9,7 @@ import org.infnet.guildaApiTP1.dto.AventureiroResumoDTO;
 import org.infnet.guildaApiTP1.dto.BuscaResponse;
 import org.infnet.guildaApiTP1.dto.CompanheiroDTO;
 import org.infnet.guildaApiTP1.enums.ClasseEnum;
-import org.infnet.guildaApiTP1.model.Aventureiro;
+import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
 import org.infnet.guildaApiTP1.service.AventureiroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -5,8 +5,8 @@ import org.infnet.guildaApiTP1.dto.BuscaResponse;
 import org.infnet.guildaApiTP1.dto.CompanheiroDTO;
 import org.infnet.guildaApiTP1.enums.ClasseEnum;
 import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
-import org.infnet.guildaApiTP1.model.Aventureiro;
-import org.infnet.guildaApiTP1.model.Companheiro;
+import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
+import org.infnet.guildaApiTP1.model.aventura_schema.Companheiro;
 import org.infnet.guildaApiTP1.repository.AventureiroRepository;
 import org.springframework.stereotype.Service;
 

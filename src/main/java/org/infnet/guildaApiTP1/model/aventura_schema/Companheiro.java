@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.model;
+package org.infnet.guildaApiTP1.model.aventura_schema;
 
 import lombok.*;
 import org.infnet.guildaApiTP1.enums.EspecieEnum;

@@ -1,7 +1,12 @@
-package org.infnet.guildaApiTP1.model.aventura_schema;
+package org.infnet.guildaApiTP1.enums;
 
 import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-public class NivelPerigoEnum {
-  }
+public enum NivelPerigoEnum {
+    BAIXO,
+    MEDIO,
+    ALTO,
+    EXTREMO
+}

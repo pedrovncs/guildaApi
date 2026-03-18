@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class Parte1Tests {
+public class Parte1JpaTest {
 
     @Autowired
     UsuarioRepository usuarioRepository;

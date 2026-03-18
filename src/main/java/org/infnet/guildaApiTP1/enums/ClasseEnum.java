@@ -5,5 +5,6 @@ public enum ClasseEnum {
     MAGO,
     ARQUEIRO,
     CLERIGO,
+    CACADOR,
     LADINO
 }

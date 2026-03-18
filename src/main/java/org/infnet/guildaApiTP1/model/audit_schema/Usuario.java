@@ -48,9 +48,16 @@ public class Usuario {
     @Column(name = "ultimo_login_em")
     private ZonedDateTime ultimoLoginEm;
 
-    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false,
+    columnDefinition = "timestamptz default now()")
     private ZonedDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false, updatable = false, insertable = false)
+    @Column(name = "updated_at", nullable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime updatedAt;
+
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = ZonedDateTime.now();
+    }
 }

@@ -20,47 +20,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class Parte2Tests {
+public class Parte2JpaTest {
 
     @Autowired
     private EntityManager entityManager;
 
-    private Organizacao org;
-    private Usuario usuario;
-    private Missao missao;
-    private Aventureiro aventureiro;
+    private Organizacao orgPadrao;
+    private Usuario usuarioPadrao;
+    private Missao missaoPadrao;
+    private Aventureiro aventureiroPadrao;
 
     @BeforeEach
     void setup(){
-        org = new Organizacao();
-        org.setNome("GUILDA TESTE ");
-        org.setAtivo(true);
-        entityManager.persist(org);
+        orgPadrao = new Organizacao();
+        orgPadrao.setNome("GUILDA TESTE ");
+        orgPadrao.setAtivo(true);
+        entityManager.persist(orgPadrao);
 
-        usuario = new Usuario();
-        usuario.setNome("USUARIO TESTE");
-        usuario.setEmail("USUARIO_TESTE@EMAIL.COM");
-        usuario.setSenhaHash("123SENHA123");
-        usuario.setStatus(StatusUsuarioEnum.ATIVO);
-        usuario.setOrganizacao(org);
-        entityManager.persist(usuario);
+        usuarioPadrao = new Usuario();
+        usuarioPadrao.setNome("USUARIO TESTE");
+        usuarioPadrao.setEmail("USUARIO_TESTE@EMAIL.COM");
+        usuarioPadrao.setSenhaHash("123SENHA123");
+        usuarioPadrao.setStatus(StatusUsuarioEnum.ATIVO);
+        usuarioPadrao.setOrganizacao(orgPadrao);
+        entityManager.persist(usuarioPadrao);
 
-        aventureiro = new Aventureiro();
-        aventureiro.setNome("AVENTUREIRO TESTE");
-        aventureiro.setClasse(ClasseEnum.MAGO);
-        aventureiro.setNivel(12);
-        aventureiro.setAtivo(true);
-        aventureiro.setOrganizacao(org);
-        aventureiro.setUsuarioResponsavel(usuario);
-        entityManager.persist(aventureiro);
+        aventureiroPadrao = new Aventureiro();
+        aventureiroPadrao.setNome("AVENTUREIRO TESTE");
+        aventureiroPadrao.setClasse(ClasseEnum.MAGO);
+        aventureiroPadrao.setNivel(12);
+        aventureiroPadrao.setAtivo(true);
+        aventureiroPadrao.setOrganizacao(orgPadrao);
+        aventureiroPadrao.setUsuarioResponsavel(usuarioPadrao);
+        entityManager.persist(aventureiroPadrao);
 
-        missao = new Missao();
-        missao.setTitulo("TESTAR CÓDIGO");
-        missao.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
-        missao.setStatus(StatusMissaoEnum.EM_ANDAMENTO);
-        missao.setOrganizacao(org);
+        missaoPadrao = new Missao();
+        missaoPadrao.setTitulo("TESTAR CÓDIGO");
+        missaoPadrao.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
+        missaoPadrao.setStatus(StatusMissaoEnum.EM_ANDAMENTO);
+        missaoPadrao.setOrganizacao(orgPadrao);
 
-        entityManager.persist(missao);
+        entityManager.persist(missaoPadrao);
 
         entityManager.flush();
     }
@@ -78,8 +78,8 @@ public class Parte2Tests {
         aventureiro.setClasse(ClasseEnum.GUERREIRO);
         aventureiro.setNivel(11);
         aventureiro.setAtivo(true);
-        aventureiro.setOrganizacao(org);
-        aventureiro.setUsuarioResponsavel(usuario);
+        aventureiro.setOrganizacao(orgPadrao);
+        aventureiro.setUsuarioResponsavel(usuarioPadrao);
         aventureiro.setCompanheiro(companheiro);
 
         entityManager.persist(aventureiro);
@@ -96,13 +96,13 @@ public class Parte2Tests {
     }
 
     @Test
-    @DisplayName("deve adicionar uma nova missao com organizacao")
-    void devePersistirMissaoAssociadaAOrganizacao() {
+    @DisplayName("deve adicionar uma nova missao com organizacao existente")
+    void devePersistirMissaoAssociadaAOrganizacaoExistente() {
         Missao missao = new Missao();
         missao.setTitulo("TESTAR MISSAO");
         missao.setNivelDePerigo(NivelPerigoEnum.BAIXO);
         missao.setStatus(StatusMissaoEnum.PLANJEADA);
-        missao.setOrganizacao(org);
+        missao.setOrganizacao(orgPadrao);
 
         entityManager.persist(missao);
         entityManager.flush();
@@ -112,15 +112,15 @@ public class Parte2Tests {
 
         assertNotNull(salva);
         assertEquals("TESTAR MISSAO", salva.getTitulo());
-        assertEquals(org.getId(), salva.getOrganizacao().getId());
+        assertEquals(orgPadrao.getId(), salva.getOrganizacao().getId());
     }
 
     @Test
     @DisplayName("deve adicionar uma nova participacao com missao e aventureiro associados")
     void devePersistirParticipacaoEmMissao() {
         ParticipacaoEmMissao participacao = new ParticipacaoEmMissao();
-        participacao.setMissao(missao);
-        participacao.setAventureiro(aventureiro);
+        participacao.setMissao(missaoPadrao);
+        participacao.setAventureiro(aventureiroPadrao);
         participacao.setPapelNaMissao(PapelNaMissaoEnum.LIDER);
         participacao.setRecompensaEmOuro(100);
         participacao.setDestaqueMvp(true);
@@ -133,24 +133,24 @@ public class Parte2Tests {
         ParticipacaoEmMissao salva = entityManager.find(ParticipacaoEmMissao.class, participacao.getId());
 
         assertNotNull(salva);
-        assertEquals(missao.getId(), salva.getMissao().getId());
-        assertEquals(aventureiro.getId(), salva.getAventureiro().getId());
+        assertEquals(missaoPadrao.getId(), salva.getMissao().getId());
+        assertEquals(aventureiroPadrao.getId(), salva.getAventureiro().getId());
     }
 
     @Test
     @DisplayName("deve falhar ao tentar adicionar uma participacao duplicada para o mesmo aventureiro e missao")
     void deveFalharComParticipacaoDuplicada(){
         ParticipacaoEmMissao p = new ParticipacaoEmMissao();
-        p.setMissao(missao);
-        p.setAventureiro(aventureiro);
+        p.setMissao(missaoPadrao);
+        p.setAventureiro(aventureiroPadrao);
         p.setPapelNaMissao(PapelNaMissaoEnum.SUPORTE);
         p.setRecompensaEmOuro(50);
         p.setDestaqueMvp(false);
         entityManager.persist(p);
 
         ParticipacaoEmMissao pRepetida = new ParticipacaoEmMissao();
-        pRepetida.setMissao(missao);
-        pRepetida.setAventureiro(aventureiro);
+        pRepetida.setMissao(missaoPadrao);
+        pRepetida.setAventureiro(aventureiroPadrao);
         pRepetida.setPapelNaMissao(PapelNaMissaoEnum.SUPORTE);
         pRepetida.setRecompensaEmOuro(70);
         pRepetida.setDestaqueMvp(false);

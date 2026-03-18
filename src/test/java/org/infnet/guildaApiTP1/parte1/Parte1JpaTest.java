@@ -4,10 +4,8 @@ import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.enums.StatusUsuarioEnum;
 import org.infnet.guildaApiTP1.model.audit_schema.*;
 import org.infnet.guildaApiTP1.model.audit_schema.keys.UserRoleId;
-import org.infnet.guildaApiTP1.repository.OrganizacaoRepository;
 import org.infnet.guildaApiTP1.repository.RoleRepository;
 import org.infnet.guildaApiTP1.repository.UsuarioRepository;
-import org.infnet.guildaApiTP1.service.RoleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class parte1Tests {
+public class Parte1Tests {
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -35,11 +33,11 @@ public class parte1Tests {
     @Autowired
     EntityManager entityManager;
 
-    Organizacao org;
-    Usuario usuario;
+    private Organizacao org;
+    private Usuario usuario;
 
     @BeforeEach
-    void criarOrg(){
+    void setupOrgUsuario(){
         org = new Organizacao();
         org.setNome("GUILDA TESTE ");
         org.setAtivo(true);

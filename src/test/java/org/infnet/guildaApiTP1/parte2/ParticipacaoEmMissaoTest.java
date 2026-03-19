@@ -45,8 +45,8 @@ class ParticipacaoEmMissaoTest {
 
         usuarioPadrao = new Usuario();
         usuarioPadrao.setNome("USUARIO TESTE");
-        usuarioPadrao.setEmail("user" + System.nanoTime() + "@teste.com");
-        usuarioPadrao.setSenhaHash("hash");
+        usuarioPadrao.setEmail("TESTE@EMAIL.COM");
+        usuarioPadrao.setSenhaHash("senhasenha123");
         usuarioPadrao.setStatus(StatusUsuarioEnum.ATIVO);
         usuarioPadrao.setOrganizacao(orgPadrao);
         entityManager.persist(usuarioPadrao);

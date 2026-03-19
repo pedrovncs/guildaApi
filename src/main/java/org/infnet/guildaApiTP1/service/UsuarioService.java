@@ -3,6 +3,7 @@ package org.infnet.guildaApiTP1.service;
 import lombok.RequiredArgsConstructor;
 import org.infnet.guildaApiTP1.dto.*;
 import org.infnet.guildaApiTP1.enums.StatusUsuarioEnum;
+import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
 import org.infnet.guildaApiTP1.model.audit_schema.Organizacao;
 import org.infnet.guildaApiTP1.model.audit_schema.Usuario;
 import org.infnet.guildaApiTP1.repository.OrganizacaoRepository;
@@ -20,7 +21,8 @@ public class UsuarioService {
     private final OrganizacaoRepository organizacaoRepository;
 
     public UsuarioComRolesDTO buscarPorIdComRoles(Long userId) {
-        Usuario usuario = usuarioRepository.findWithRolesById(userId);
+        Usuario usuario = usuarioRepository.findWithRolesById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 
         List<RoleDTO> usuarioRoles = usuario.getRoles().stream()
                 .map(r ->

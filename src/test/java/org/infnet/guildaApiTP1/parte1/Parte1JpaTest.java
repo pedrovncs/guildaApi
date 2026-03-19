@@ -2,6 +2,7 @@ package org.infnet.guildaApiTP1.parte1;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.enums.StatusUsuarioEnum;
+import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
 import org.infnet.guildaApiTP1.model.audit_schema.*;
 import org.infnet.guildaApiTP1.model.audit_schema.keys.UserRoleId;
 import org.infnet.guildaApiTP1.repository.RoleRepository;
@@ -70,7 +71,7 @@ public class Parte1JpaTest {
     @DisplayName("deve carregar usuario com roles")
     void deveCarregarUsuarioComRoles() {
         Role role = new Role();
-        role.setNome("TESTER" + System.nanoTime());
+        role.setNome("TESTER");
         role.setDescricao("TESTADOR DA ORGANIZACAO");
         role.setOrganizacao(org);
 
@@ -86,7 +87,8 @@ public class Parte1JpaTest {
         entityManager.flush();
         entityManager.clear();
 
-        Usuario usuarioCarregado = usuarioRepository.findWithRolesById(usuario.getId());
+        Usuario usuarioCarregado = usuarioRepository.findWithRolesById(usuario.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
 
         assertNotNull(usuarioCarregado);
         assertNotNull(usuarioCarregado.getRoles());
@@ -102,7 +104,7 @@ public class Parte1JpaTest {
     @DisplayName("deve carregar role com permissions")
     void deveCarregarRoleComPermissions() {
         Permission permissao1 = new Permission();
-        permissao1.setCode("usuario:ler:" + System.nanoTime());
+        permissao1.setCode("TESTAR SISTEMA 2");
         permissao1.setDescricao("Permite ler usuario");
         entityManager.persist(permissao1);
 
@@ -121,7 +123,8 @@ public class Parte1JpaTest {
         entityManager.flush();
         entityManager.clear();
 
-        Role roleCarregada = roleRepository.findWithPermissionsById(role.getId());
+        Role roleCarregada = roleRepository.findWithPermissionsById(role.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Role não encontrada"));
 
         assertNotNull(roleCarregada);
         assertNotNull(roleCarregada.getPermissions());

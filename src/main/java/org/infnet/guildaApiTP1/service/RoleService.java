@@ -16,7 +16,7 @@ public class RoleService {
 
     private final RoleRepository repository;
 
-    public RoleComPermissionsDTO buscarPorIdComPermissions(Long roleId){
+    public RoleComPermissionsDTO buscarPorIdComPermissions(Long roleId) {
         Role role = repository.findWithPermissionsById(roleId)
                 .orElseThrow(() -> new EntityNotFoundException("Role não encontrada"));
 

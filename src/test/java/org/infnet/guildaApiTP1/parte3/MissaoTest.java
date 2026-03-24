@@ -38,9 +38,6 @@ public class MissaoTest {
     private EntityManager entityManager;
 
     @Autowired
-    private MissaoRepository missaoRepository;
-
-    @Autowired
     private ParticipacaoEmMissaoService participacaoEmMissaoService;
 
     @Autowired

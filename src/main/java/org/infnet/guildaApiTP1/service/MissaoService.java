@@ -1,20 +1,19 @@
 package org.infnet.guildaApiTP1.service;
 
 import lombok.RequiredArgsConstructor;
-import org.infnet.guildaApiTP1.dto.MissaoCompletaDTO;
-import org.infnet.guildaApiTP1.dto.MissaoDTO;
-import org.infnet.guildaApiTP1.dto.OrganizacaoDTO;
-import org.infnet.guildaApiTP1.dto.ParticipanteDTO;
+import org.infnet.guildaApiTP1.dto.*;
 import org.infnet.guildaApiTP1.enums.NivelPerigoEnum;
 import org.infnet.guildaApiTP1.enums.StatusMissaoEnum;
 import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
 import org.infnet.guildaApiTP1.model.aventura_schema.Missao;
 import org.infnet.guildaApiTP1.repository.MissaoRepository;
 import org.infnet.guildaApiTP1.repository.ParticipacaoEmMissaoRepository;
+import org.infnet.guildaApiTP1.util.ValidarDataIntervaloUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -31,15 +30,10 @@ public class MissaoService {
             ZonedDateTime dataIntervaloInicio,
             ZonedDateTime dataIntervaloFim,
             Pageable pageable
-            ) {
+    ) {
 
-        ZonedDateTime dataInicio = dataIntervaloInicio != null
-                ? dataIntervaloInicio
-                : ZonedDateTime.of(1, 1, 1, 0, 0, 0, 0, ZonedDateTime.now().getZone());
-
-        ZonedDateTime dataFim = dataIntervaloFim != null
-                ? dataIntervaloFim
-                : ZonedDateTime.of(9999, 1, 1, 0, 0, 0, 0, ZonedDateTime.now().getZone());
+        ZonedDateTime dataInicio = ValidarDataIntervaloUtils.intervaloInicioOuPadrao(dataIntervaloInicio);
+        ZonedDateTime dataFim = ValidarDataIntervaloUtils.intervaloFimOuPadrao(dataIntervaloFim);
 
         return missaoRepository.buscarComFiltros(
                 status,
@@ -49,7 +43,7 @@ public class MissaoService {
                 pageable);
     }
 
-    public MissaoCompletaDTO buscarMissaoCompleta(Long missaoId){
+    public MissaoCompletaDTO buscarMissaoCompleta(Long missaoId) {
         Missao missao = missaoRepository.findComOrganizacaoById(missaoId)
                 .orElseThrow(() -> new EntityNotFoundException("Missão não encontrada"));
 
@@ -60,7 +54,7 @@ public class MissaoService {
 
         List<ParticipanteDTO> participantes = participacaoRepository.buscarParticipantesPorMissaoId(missaoId);
 
-        return new  MissaoCompletaDTO(
+        return new MissaoCompletaDTO(
                 missao.getId(),
                 missao.getTitulo(),
                 organizacao,
@@ -73,5 +67,4 @@ public class MissaoService {
         );
 
     }
-
 }

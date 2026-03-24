@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(schema = "aventura", name = "missoes")
 public class Missao {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -40,10 +42,10 @@ public class Missao {
     private ZonedDateTime createdAt;
 
     @Column(name = "data_inicio")
-    private  ZonedDateTime dataInicio;
+    private ZonedDateTime dataInicio;
 
     @Column(name = "data_termino")
-    private  ZonedDateTime dataTermino;
+    private ZonedDateTime dataTermino;
 
     @OneToMany(mappedBy = "missao", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ParticipacaoEmMissao> participacoes = new ArrayList<>();

@@ -7,17 +7,19 @@ import lombok.Setter;
 import java.util.*;
 
 @Entity
-@Getter@Setter
-@Table(schema="audit", name="roles", uniqueConstraints = {
+@Getter
+@Setter
+@Table(schema = "audit", name = "roles", uniqueConstraints = {
         @UniqueConstraint(
                 name = "uq_roles_nome_por_org",
-                columnNames = {"organizacao_id", "nome" })
+                columnNames = {"organizacao_id", "nome"})
 })
 public class Role {
-    @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional=false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacao_id", nullable = false)
     private Organizacao organizacao;
 
@@ -45,6 +47,6 @@ public class Role {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name="created_at", nullable = false, updatable = false, insertable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
     private Date createdAt;
 }

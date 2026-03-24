@@ -8,7 +8,8 @@ import lombok.Setter;
 import java.io.Serializable;
 
 @Embeddable
-@Getter@Setter
+@Getter
+@Setter
 @EqualsAndHashCode
 public class UserRoleId implements Serializable {
 

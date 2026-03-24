@@ -71,6 +71,6 @@ public class UsuarioService {
                         org.getId(),
                         org.getNome()
                 )
-    );
+        );
     }
 }

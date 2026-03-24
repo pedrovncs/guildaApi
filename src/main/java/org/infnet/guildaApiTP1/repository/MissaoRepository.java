@@ -22,24 +22,24 @@ public interface MissaoRepository extends JpaRepository<Missao, Long> {
     Optional<Missao> findComOrganizacaoById(long id);
 
     @Query("""
-        select new org.infnet.guildaApiTP1.dto.MissaoDTO(
-             m.id,
-             m.titulo,
-             m.nivelDePerigo,
-             m.status,
-             m.dataInicio,
-             m.dataTermino
-             )
-             from Missao m
-             where (:status is null or m.status = :status)
-             and (:nivelDePerigo is null or m.nivelDePerigo = :nivelDePerigo)
-             and m.dataInicio >= :dataIntervaloInicio
-             and m.dataInicio <= :dataIntervaloFim
-     """)
+               select new org.infnet.guildaApiTP1.dto.MissaoDTO(
+                    m.id,
+                    m.titulo,
+                    m.nivelDePerigo,
+                    m.status,
+                    m.dataInicio,
+                    m.dataTermino
+                    )
+                    from Missao m
+                    where (:status is null or m.status = :status)
+                    and (:nivelDePerigo is null or m.nivelDePerigo = :nivelDePerigo)
+                    and m.dataInicio >= :dataIntervaloInicio
+                    and m.dataInicio <= :dataIntervaloFim
+            """)
     Page<MissaoDTO> buscarComFiltros(
             @Param("status") StatusMissaoEnum status,
             @Param("nivelDePerigo") NivelPerigoEnum nivelDePerigo,
             @Param("dataIntervaloInicio") ZonedDateTime dataInicio,
-            @Param("dataIntervaloFim")  ZonedDateTime dataFim,
+            @Param("dataIntervaloFim") ZonedDateTime dataFim,
             Pageable pageable);
 }

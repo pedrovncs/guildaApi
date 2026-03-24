@@ -3,6 +3,9 @@ package org.infnet.guildaApiTP1.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.infnet.guildaApiTP1.dto.CriarParticipacaoEmMissaoRequest;
+import org.infnet.guildaApiTP1.dto.RelatorioMissaoDTO;
+import org.infnet.guildaApiTP1.dto.RelatorioParticipacaoDTO;
+import org.infnet.guildaApiTP1.enums.StatusMissaoEnum;
 import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
 import org.infnet.guildaApiTP1.exceptions.RegraDeMissaoException;
 import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
@@ -11,7 +14,13 @@ import org.infnet.guildaApiTP1.model.aventura_schema.ParticipacaoEmMissao;
 import org.infnet.guildaApiTP1.repository.AventureiroRepository;
 import org.infnet.guildaApiTP1.repository.MissaoRepository;
 import org.infnet.guildaApiTP1.repository.ParticipacaoEmMissaoRepository;
+import org.infnet.guildaApiTP1.util.ValidarDataIntervaloUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.ZonedDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +60,32 @@ public class ParticipacaoEmMissaoService {
         if (!condicao) {
             throw new RegraDeMissaoException(mensagem);
         }
+    }
+
+    public Page<RelatorioParticipacaoDTO> gerarRankingAventureiros(
+            StatusMissaoEnum status,
+            ZonedDateTime dataInicio,
+            ZonedDateTime dataFim) {
+
+        ZonedDateTime dataIntervaloInicio = ValidarDataIntervaloUtils.intervaloInicioOuPadrao(dataInicio);
+        ZonedDateTime dataIntervaloFim = ValidarDataIntervaloUtils.intervaloFimOuPadrao(dataFim);
+
+        return participacaoRepository.gerarRankingAventureiros(
+                status,
+                dataIntervaloInicio,
+                dataIntervaloFim,
+                PageRequest.of(0, 10)
+        );
+    }
+
+    public Page<RelatorioMissaoDTO> gerarRelatorioMissao(ZonedDateTime dataInicio, ZonedDateTime dataFim, Pageable pageable) {
+
+        ZonedDateTime dataIntervaloInicio = ValidarDataIntervaloUtils.intervaloInicioOuPadrao(dataInicio);
+        ZonedDateTime dataIntervaloFim = ValidarDataIntervaloUtils.intervaloFimOuPadrao(dataFim);
+
+        return participacaoRepository.gerarRelatorioMissao(
+                dataIntervaloInicio,
+                dataIntervaloFim,
+                pageable);
     }
 }

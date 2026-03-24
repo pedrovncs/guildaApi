@@ -8,10 +8,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter@Setter
-@Table(schema="audit", name="permissions")
+@Getter
+@Setter
+@Table(schema = "audit", name = "permissions")
 public class Permission {
-    @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToMany(mappedBy = "permissions")

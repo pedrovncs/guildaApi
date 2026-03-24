@@ -17,21 +17,21 @@ import java.util.Optional;
 public interface AventureiroRepository extends JpaRepository<Aventureiro, Long> {
 
     @Query("""
-        select new org.infnet.guildaApiTP1.dto.AventureiroDTO(
-            a.id,
-            a.nome,
-            a.classe,
-            a.nivel,
-            a.ativo
-        )
-        from Aventureiro a
-        where (:ativo is null or a.ativo = :ativo)
-            and (:classe is null or a.classe = :classe)
-            and (:nivelMinimo is null or a.nivel >= :nivelMinimo)
-    """)
+                select new org.infnet.guildaApiTP1.dto.AventureiroDTO(
+                    a.id,
+                    a.nome,
+                    a.classe,
+                    a.nivel,
+                    a.ativo
+                )
+                from Aventureiro a
+                where (:ativo is null or a.ativo = :ativo)
+                    and (:classe is null or a.classe = :classe)
+                    and (:nivelMinimo is null or a.nivel >= :nivelMinimo)
+            """)
     Page<AventureiroDTO> buscarComFiltros(
             @Param("ativo") Boolean ativo,
-            @Param("classe")ClasseEnum classe,
+            @Param("classe") ClasseEnum classe,
             @Param("nivelMinimo") Integer nivelMinimo,
             Pageable pageable);
 

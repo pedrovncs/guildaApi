@@ -7,8 +7,9 @@ import lombok.Setter;
 import java.time.ZonedDateTime;
 
 @Entity
-@Getter @Setter
-@Table(schema="audit", name="api_keys",
+@Getter
+@Setter
+@Table(schema = "audit", name = "api_keys",
         uniqueConstraints = @UniqueConstraint(
                 name = "uq_api_keys_nome_por_org",
                 columnNames = {"organizacao_id", "nome"})
@@ -18,7 +19,7 @@ public class ApiKey {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false, fetch =  FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacao_id")
     private Organizacao organizacao;
 

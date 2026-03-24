@@ -10,7 +10,8 @@ import org.infnet.guildaApiTP1.enums.PapelNaMissaoEnum;
 import java.time.ZonedDateTime;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(schema = "aventura", name = "participacao_em_missoes", uniqueConstraints = {
         @UniqueConstraint(
@@ -19,7 +20,8 @@ import java.time.ZonedDateTime;
 })
 
 public class ParticipacaoEmMissao {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

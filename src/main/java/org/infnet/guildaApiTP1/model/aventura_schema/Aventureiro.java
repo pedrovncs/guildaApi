@@ -14,13 +14,15 @@ import java.util.List;
 
 @Entity
 @Table(schema = "aventura", name = "aventureiros")
-@Setter@Getter
+@Setter
+@Getter
 @NoArgsConstructor
 public class Aventureiro {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional=false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacao_id", nullable = false)
     private Organizacao organizacao;
 
@@ -42,15 +44,15 @@ public class Aventureiro {
     @Column(name = "nivel", nullable = false)
     private Integer nivel;
 
-    @Column(name= "ativo", nullable = false)
+    @Column(name = "ativo", nullable = false)
     private Boolean ativo;
 
     @Column(name = "created_at", nullable = false, updatable = false, insertable = false,
-    columnDefinition = "timestamptz default now()")
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false, insertable = false,
-    columnDefinition = "timestamptz default now()")
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime updatedAt;
 
     @PreUpdate

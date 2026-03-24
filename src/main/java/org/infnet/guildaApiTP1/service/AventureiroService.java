@@ -33,7 +33,7 @@ public class AventureiroService {
                 ));
     }
 
-    public AventureiroCompletoDTO buscarAventureiroCompleto(Long id){
+    public AventureiroCompletoDTO buscarAventureiroCompleto(Long id) {
         Aventureiro aventureiro = aventureiroRepository.findAventureiroComCompanheiroEOrganizacaoById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Aventureiro não encontrado"));
 
@@ -44,14 +44,14 @@ public class AventureiroService {
 
         CompanheiroDTO companheiro = aventureiro.getCompanheiro() != null
                 ? new CompanheiroDTO(
-                        aventureiro.getCompanheiro().getNome(),
-                        aventureiro.getCompanheiro().getEspecie(),
-                        aventureiro.getCompanheiro().getIndiceLealdade()
-                )
+                aventureiro.getCompanheiro().getNome(),
+                aventureiro.getCompanheiro().getEspecie(),
+                aventureiro.getCompanheiro().getIndiceLealdade()
+        )
                 : null;
 
         UltimaMissaoDTO ultimaMissao = participacaoEmMissaoRepository
-                .buscarUltimaMissao(aventureiro.getId(), PageRequest.of(0,1))
+                .buscarUltimaMissao(aventureiro.getId(), PageRequest.of(0, 1))
                 .stream().findFirst()
                 .orElse(null);
 

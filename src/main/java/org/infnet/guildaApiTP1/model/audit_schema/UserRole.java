@@ -8,8 +8,9 @@ import org.infnet.guildaApiTP1.model.audit_schema.keys.UserRoleId;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(schema ="audit", name="user_roles")
-@Getter@Setter
+@Table(schema = "audit", name = "user_roles")
+@Getter
+@Setter
 public class UserRole {
     @EmbeddedId
     private UserRoleId userRoleId;

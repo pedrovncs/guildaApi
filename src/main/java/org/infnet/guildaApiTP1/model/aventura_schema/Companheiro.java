@@ -7,11 +7,13 @@ import lombok.*;
 import org.infnet.guildaApiTP1.enums.EspecieEnum;
 
 @Entity
-@Setter @Getter
+@Setter
+@Getter
 @NoArgsConstructor
 @Table(schema = "aventura", name = "companheiros")
 public class Companheiro {
-    @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(optional = false, fetch = FetchType.LAZY)

@@ -11,10 +11,12 @@ import java.time.ZonedDateTime;
 import java.util.Map;
 
 @Entity
-@Getter @Setter
-@Table(schema="audit", name="audit_entries")
+@Getter
+@Setter
+@Table(schema = "audit", name = "audit_entries")
 public class AuditEntry {
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -32,7 +34,7 @@ public class AuditEntry {
     @Column(name = "action", length = 30, nullable = false)
     private String action;
 
-    @Column(name="entity_schema", length = 60, nullable = false)
+    @Column(name = "entity_schema", length = 60, nullable = false)
     private String entitySchema;
 
     @Column(name = "entity_name", length = 80, nullable = false)

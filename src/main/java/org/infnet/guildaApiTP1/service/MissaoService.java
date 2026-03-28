@@ -10,7 +10,6 @@ import org.infnet.guildaApiTP1.repository.MissaoRepository;
 import org.infnet.guildaApiTP1.repository.ParticipacaoEmMissaoRepository;
 import org.infnet.guildaApiTP1.util.ValidarDataIntervaloUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 

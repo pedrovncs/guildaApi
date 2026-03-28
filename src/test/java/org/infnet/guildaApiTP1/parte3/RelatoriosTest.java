@@ -19,7 +19,6 @@ import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabas
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import java.time.ZonedDateTime;
 
@@ -187,8 +186,6 @@ public class RelatoriosTest {
                 .filter(r -> r.nome().equals("GANDALF"))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError("Gandalf não encontrado no ranking de 1938")));
-
-
     }
 
     @Test

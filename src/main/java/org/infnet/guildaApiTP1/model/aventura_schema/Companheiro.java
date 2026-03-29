@@ -31,5 +31,4 @@ public class Companheiro {
     @Max(100)
     @Column(name = "indice_lealdade", nullable = false)
     private Integer indiceLealdade;
-
 }

@@ -125,9 +125,9 @@ public class AventureiroTest {
     void deveBuscarPorNomeParcial() {
         Pageable pageable = PageRequest.of(0, 10);
 
-        Page<Aventureiro> busca = aventureiroRepository.findByNomeContainingIgnoreCase("lbo", pageable);
+        Page<AventureiroDTO> busca = aventureiroService.listarAventureirosPorNome("lbo", pageable);
 
-        assertEquals("BILBO", busca.getContent().getFirst().getNome());
+        assertEquals("BILBO", busca.getContent().getFirst().nome());
     }
 
     @Test

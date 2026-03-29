@@ -43,7 +43,8 @@ public class AuditEntry {
     @Column(name = "entity_id", length = 80)
     private String entityId;
 
-    @Column(name = "occurred_at", nullable = false)
+    @Column(name = "occurred_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime occuredAt;
 
     @Column(name = "ip")
@@ -62,5 +63,4 @@ public class AuditEntry {
 
     @Column(name = "success", nullable = false)
     private Boolean success;
-
 }

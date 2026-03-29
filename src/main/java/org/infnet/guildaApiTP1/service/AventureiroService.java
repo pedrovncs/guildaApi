@@ -115,14 +115,7 @@ public class AventureiroService {
     }
 
     public Page<AventureiroDTO> listarAventureirosPorNome(String nome, Pageable pageable) {
-        return aventureiroRepository.findByNomeContainingIgnoreCase(nome, pageable)
-                .map(a -> new AventureiroDTO(
-                        a.getId(),
-                        a.getNome(),
-                        a.getClasse(),
-                        a.getNivel(),
-                        a.isAtivo()
-                ));
+        return aventureiroRepository.buscarPorNome(nome, pageable);
     }
 
     public AventureiroCompletoDTO buscarAventureiroCompleto(Long id) {
@@ -161,6 +154,4 @@ public class AventureiroService {
                 ultimaMissao
         );
     }
-
-
 }

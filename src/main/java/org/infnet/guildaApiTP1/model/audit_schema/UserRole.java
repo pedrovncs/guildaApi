@@ -25,6 +25,7 @@ public class UserRole {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @Column(name = "granted_at", nullable = false)
+    @Column(name = "granted_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime grantedAt;
 }

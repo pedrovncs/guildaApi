@@ -32,7 +32,8 @@ public class ApiKey {
     @Column(name = "ativo", nullable = false)
     private Boolean ativo;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime createdAt;
 
     @Column(name = "last_used_at")

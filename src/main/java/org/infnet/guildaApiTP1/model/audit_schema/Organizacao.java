@@ -7,7 +7,6 @@ import lombok.Setter;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-
 @Entity
 @Getter
 @Setter
@@ -26,6 +25,7 @@ public class Organizacao {
     @Column(name = "ativo", nullable = false)
     private Boolean ativo;
 
-    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private ZonedDateTime createdAt;
 }

@@ -35,7 +35,18 @@ public interface AventureiroRepository extends JpaRepository<Aventureiro, Long> 
             @Param("nivelMinimo") Integer nivelMinimo,
             Pageable pageable);
 
-    Page<Aventureiro> findByNomeContainingIgnoreCase(String nome, Pageable pageable);
+    @Query("""
+           select new org.infnet.guildaApiTP1.dto.AventureiroDTO(
+               a.id,
+               a.nome,
+               a.classe,
+               a.nivel,
+               a.ativo
+           )
+           from Aventureiro a
+           where lower(a.nome) like lower(concat('%', :nome, '%'))
+           """)
+    Page<AventureiroDTO> buscarPorNome(String nome, Pageable pageable);
 
     @EntityGraph(attributePaths = {"companheiro", "organizacao"})
     Optional<Aventureiro> findAventureiroComCompanheiroEOrganizacaoById(Long id);

@@ -47,6 +47,7 @@ public class Role {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
     private Date createdAt;
 }

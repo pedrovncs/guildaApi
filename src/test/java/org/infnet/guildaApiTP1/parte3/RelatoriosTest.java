@@ -235,5 +235,4 @@ public class RelatoriosTest {
         assertEquals("FAZER ANEIS DE FUMAÇA", relatorios.getContent().getFirst().titulo());
         assertEquals(0, relatorios.getContent().getFirst().totalParticipantes());
     }
-
 }

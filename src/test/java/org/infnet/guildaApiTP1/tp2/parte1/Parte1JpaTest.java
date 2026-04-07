@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte1;
+package org.infnet.guildaApiTP1.tp2.parte1;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.enums.StatusUsuarioEnum;

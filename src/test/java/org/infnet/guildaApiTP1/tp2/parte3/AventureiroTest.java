@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte3;
+package org.infnet.guildaApiTP1.tp2.parte3;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.dto.AventureiroCompletoDTO;
@@ -143,14 +143,14 @@ public class AventureiroTest {
         Missao m1 = new Missao();
         m1.setTitulo("ENCONTRAR UM LADINO");
         m1.setNivelDePerigo(NivelPerigoEnum.BAIXO);
-        m1.setStatus(StatusMissaoEnum.PLANJEADA);
+        m1.setStatus(StatusMissaoEnum.PLANEJADA);
         m1.setOrganizacao(org);
         entityManager.persist(m1);
 
         Missao m2 = new Missao();
         m2.setTitulo("RETOMAR EREBOR");
         m2.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
-        m2.setStatus(StatusMissaoEnum.PLANJEADA);
+        m2.setStatus(StatusMissaoEnum.PLANEJADA);
         m2.setOrganizacao(org);
         entityManager.persist(m2);
 
@@ -190,14 +190,14 @@ public class AventureiroTest {
         Missao m1 = new Missao();
         m1.setTitulo("ENCONTRAR UM LADINO");
         m1.setNivelDePerigo(NivelPerigoEnum.BAIXO);
-        m1.setStatus(StatusMissaoEnum.PLANJEADA);
+        m1.setStatus(StatusMissaoEnum.PLANEJADA);
         m1.setOrganizacao(org);
         entityManager.persist(m1);
 
         Missao m2 = new Missao();
         m2.setTitulo("RETOMAR EREBOR");
         m2.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
-        m2.setStatus(StatusMissaoEnum.PLANJEADA);
+        m2.setStatus(StatusMissaoEnum.PLANEJADA);
         m2.setOrganizacao(org);
         entityManager.persist(m2);
 

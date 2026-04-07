@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte2;
+package org.infnet.guildaApiTP1.tp2.parte2;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.dto.CriarParticipacaoEmMissaoRequest;
@@ -54,7 +54,7 @@ class ParticipacaoEmMissaoTest {
         missaoPadrao = new Missao();
         missaoPadrao.setTitulo("MISAO TESTE");
         missaoPadrao.setNivelDePerigo(NivelPerigoEnum.MEDIO);
-        missaoPadrao.setStatus(StatusMissaoEnum.PLANJEADA);
+        missaoPadrao.setStatus(StatusMissaoEnum.PLANEJADA);
         missaoPadrao.setOrganizacao(orgPadrao);
         entityManager.persist(missaoPadrao);
 

@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte2;
+package org.infnet.guildaApiTP1.tp2.parte2;
 
 import jakarta.persistence.EntityManager;
 import org.hibernate.exception.ConstraintViolationException;
@@ -101,7 +101,7 @@ public class Parte2JpaTest {
         Missao missao = new Missao();
         missao.setTitulo("TESTAR MISSAO");
         missao.setNivelDePerigo(NivelPerigoEnum.BAIXO);
-        missao.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao.setStatus(StatusMissaoEnum.PLANEJADA);
         missao.setOrganizacao(orgPadrao);
 
         entityManager.persist(missao);

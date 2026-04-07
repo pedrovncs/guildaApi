@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte3;
+package org.infnet.guildaApiTP1.tp2.parte3;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.dto.CriarParticipacaoEmMissaoRequest;
@@ -10,7 +10,6 @@ import org.infnet.guildaApiTP1.model.audit_schema.Organizacao;
 import org.infnet.guildaApiTP1.model.audit_schema.Usuario;
 import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
 import org.infnet.guildaApiTP1.model.aventura_schema.Missao;
-import org.infnet.guildaApiTP1.repository.MissaoRepository;
 import org.infnet.guildaApiTP1.service.MissaoService;
 import org.infnet.guildaApiTP1.service.ParticipacaoEmMissaoService;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,7 +66,7 @@ public class MissaoTest {
         Missao missao2 = new Missao();
         missao2.setTitulo("ENCONTRAR UM LADINO");
         missao2.setNivelDePerigo(NivelPerigoEnum.BAIXO);
-        missao2.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao2.setStatus(StatusMissaoEnum.PLANEJADA);
         missao2.setDataInicio(ZonedDateTime.of(1937, 9, 21, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao2.setOrganizacao(org);
         entityManager.persist(missao2);
@@ -75,7 +74,7 @@ public class MissaoTest {
         missao = new Missao();
         missao.setTitulo("RETOMAR EREBOR");
         missao.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
-        missao.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao.setStatus(StatusMissaoEnum.PLANEJADA);
         missao.setDataInicio(ZonedDateTime.of(1937, 9, 30, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao.setOrganizacao(org);
         entityManager.persist(missao);

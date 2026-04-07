@@ -1,4 +1,4 @@
-package org.infnet.guildaApiTP1.parte3;
+package org.infnet.guildaApiTP1.tp2.parte3;
 
 import jakarta.persistence.EntityManager;
 import org.infnet.guildaApiTP1.dto.CriarParticipacaoEmMissaoRequest;
@@ -58,7 +58,7 @@ public class RelatoriosTest {
         missao1 = new Missao();
         missao1.setTitulo("ENCONTRAR UM LADINO");
         missao1.setNivelDePerigo(NivelPerigoEnum.BAIXO);
-        missao1.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao1.setStatus(StatusMissaoEnum.PLANEJADA);
         missao1.setDataInicio(ZonedDateTime.of(1937, 9, 21, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao1.setOrganizacao(org);
         entityManager.persist(missao1);
@@ -66,7 +66,7 @@ public class RelatoriosTest {
         missao2 = new Missao();
         missao2.setTitulo("MATAR SMAUG EM EREBOR");
         missao2.setNivelDePerigo(NivelPerigoEnum.EXTREMO);
-        missao2.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao2.setStatus(StatusMissaoEnum.PLANEJADA);
         missao2.setDataInicio(ZonedDateTime.of(1937, 9, 30, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao2.setOrganizacao(org);
         entityManager.persist(missao2);
@@ -74,7 +74,7 @@ public class RelatoriosTest {
         missao3 = new Missao();
         missao3.setTitulo("DIVIDIR ESPOLIOS");
         missao3.setNivelDePerigo(NivelPerigoEnum.ALTO);
-        missao3.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao3.setStatus(StatusMissaoEnum.PLANEJADA);
         missao3.setDataInicio(ZonedDateTime.of(1938, 9, 21, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao3.setDataTermino(ZonedDateTime.of(1938, 9, 23, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao3.setOrganizacao(org);
@@ -83,7 +83,7 @@ public class RelatoriosTest {
         missao4 = new Missao();
         missao4.setTitulo("RETORNAR AO CONDADO");
         missao4.setNivelDePerigo(NivelPerigoEnum.ALTO);
-        missao4.setStatus(StatusMissaoEnum.PLANJEADA);
+        missao4.setStatus(StatusMissaoEnum.PLANEJADA);
         missao4.setDataInicio(ZonedDateTime.of(1938, 9, 23, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao4.setDataTermino(ZonedDateTime.of(1938, 9, 30, 0, 0, 0, 0, ZonedDateTime.now().getZone()));
         missao4.setOrganizacao(org);

@@ -51,6 +51,6 @@ public class Missao {
     private List<ParticipacaoEmMissao> participacoes = new ArrayList<>();
 
     public Boolean aceitaNovosParticipantes() {
-        return this.status == StatusMissaoEnum.PLANJEADA;
+        return this.status == StatusMissaoEnum.PLANEJADA;
     }
 }

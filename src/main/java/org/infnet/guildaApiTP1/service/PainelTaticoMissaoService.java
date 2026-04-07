@@ -5,8 +5,6 @@ import org.infnet.guildaApiTP1.dto.PainelTaticoMissaoDTO;
 import org.infnet.guildaApiTP1.repository.PainelTaticoMissaoRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class PainelTaticoMissaoService {
     private final PainelTaticoMissaoRepository painelTaticoMissaoRepository;
 
     public List<PainelTaticoMissaoDTO> buscarTop10() {
-        LocalDateTime dataMinima= LocalDate.now().minusDays(15).atStartOfDay();
+        LocalDateTime dataMinima = LocalDateTime.now().minusDays(15);
 
         return painelTaticoMissaoRepository.buscarTop10DosUltimos15Dias(
                 dataMinima,

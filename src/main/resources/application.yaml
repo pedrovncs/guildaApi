@@ -24,3 +24,5 @@ spring:
     init:
       mode: always
       continue-on-error: true
+  elasticsearch:
+    uris: http://localhost:9200

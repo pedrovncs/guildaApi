@@ -1,0 +1,49 @@
+@url = http://localhost:8080
+
+### Busca por nome do produto
+GET {{url}}/produtos/busca/nome?termo=espada
+Accept: application/json
+
+### Busca por descricao do produto
+GET {{url}}/produtos/busca/descricao?termo=cura
+Accept: application/json
+
+### Busca por frase exata na descricao
+GET {{url}}/produtos/busca/frase?termo=cura%20superior
+Accept: application/json
+
+### Busca fuzzy por nome
+GET {{url}}/produtos/busca/fuzzy?termo=espdaa
+Accept: application/json
+
+### Busca em nome e descricao
+GET {{url}}/produtos/busca/multicampos?termo=dragao
+Accept: application/json
+
+### Busca textual com filtro por categoria
+GET {{url}}/produtos/busca/com-filtro?termo=pocao&categoria=pocoes
+Accept: application/json
+
+### Busca por faixa de preco
+GET {{url}}/produtos/busca/faixa-preco?min=50&max=300
+Accept: application/json
+
+### Busca avancada por categoria, raridade e faixa de preco
+GET {{url}}/produtos/busca/avancada?categoria=armas&raridade=raro&min=200&max=1000
+Accept: application/json
+
+### Agregacao por categoria
+GET {{url}}/produtos/agregacoes/por-categoria
+Accept: application/json
+
+### Agregacao por raridade
+GET {{url}}/produtos/agregacoes/por-raridade
+Accept: application/json
+
+### Agregacao de preco medio
+GET {{url}}/produtos/agregacoes/preco-medio
+Accept: application/json
+
+### Agregacao por faixas de preco
+GET {{url}}/produtos/agregacoes/faixas-preco
+Accept: application/json

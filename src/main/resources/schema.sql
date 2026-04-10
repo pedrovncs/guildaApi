@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS aventura.aventureiros (
                                        updated_at timestamptz DEFAULT now() NOT NULL,
                                        organizacao_id int8 NOT NULL,
                                        usuario_responsavel_id int8 NOT NULL,
-                                       CONSTRAINT aventureiros_classe_check CHECK (((classe)::text = ANY ((ARRAY['GUERREIRO'::character varying, 'MAGO'::character varying, 'ARQUEIRO'::character varying, 'CLERIGO'::character varying, 'LADINO'::character varying])::text[]))),
+                                       CONSTRAINT aventureiros_classe_check CHECK (((classe)::text = ANY ((ARRAY['GUERREIRO'::character varying, 'MAGO'::character varying, 'ARQUEIRO'::character varying, 'CLERIGO'::character varying,'CACADOR'::character varying, 'LADINO'::character varying])::text[]))),
 	CONSTRAINT aventureiros_nivel_check CHECK ((nivel >= 1)),
 	CONSTRAINT aventureiros_pkey PRIMARY KEY (id)
 );

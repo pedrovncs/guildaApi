@@ -1,0 +1,30 @@
+package org.infnet.guildaApiTP1.audit.model;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.ZonedDateTime;
+
+@Entity
+@Table(schema = "audit", name = "user_roles")
+@Getter
+@Setter
+public class UserRole {
+    @EmbeddedId
+    private UserRoleId userRoleId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("usuarioId")
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("roleId")
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
+    @Column(name = "granted_at", nullable = false, updatable = false, insertable = false,
+            columnDefinition = "timestamptz default now()")
+    private ZonedDateTime grantedAt;
+}

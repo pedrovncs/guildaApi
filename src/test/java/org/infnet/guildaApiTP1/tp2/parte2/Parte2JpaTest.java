@@ -1,14 +1,15 @@
 package org.infnet.guildaApiTP1.tp2.parte2;
 
+import org.infnet.guildaApiTP1.audit.enums.StatusUsuarioEnum;
 import jakarta.persistence.EntityManager;
 import org.hibernate.exception.ConstraintViolationException;
-import org.infnet.guildaApiTP1.enums.*;
-import org.infnet.guildaApiTP1.model.audit_schema.Organizacao;
-import org.infnet.guildaApiTP1.model.audit_schema.Usuario;
-import org.infnet.guildaApiTP1.model.aventura_schema.Aventureiro;
-import org.infnet.guildaApiTP1.model.aventura_schema.Companheiro;
-import org.infnet.guildaApiTP1.model.aventura_schema.Missao;
-import org.infnet.guildaApiTP1.model.aventura_schema.ParticipacaoEmMissao;
+import org.infnet.guildaApiTP1.audit.model.Organizacao;
+import org.infnet.guildaApiTP1.audit.model.Usuario;
+import org.infnet.guildaApiTP1.aventura.enums.*;
+import org.infnet.guildaApiTP1.aventura.model.Aventureiro;
+import org.infnet.guildaApiTP1.aventura.model.Companheiro;
+import org.infnet.guildaApiTP1.aventura.model.Missao;
+import org.infnet.guildaApiTP1.aventura.model.ParticipacaoEmMissao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

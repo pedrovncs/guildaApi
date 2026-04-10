@@ -1,7 +1,7 @@
 package org.infnet.guildaApiTP1.tp3;
 
-import org.infnet.guildaApiTP1.dto.PainelTaticoMissaoDTO;
-import org.infnet.guildaApiTP1.service.PainelTaticoMissaoService;
+import org.infnet.guildaApiTP1.operacoes.dto.PainelTaticoMissaoDTO;
+import org.infnet.guildaApiTP1.operacoes.service.PainelTaticoMissaoService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

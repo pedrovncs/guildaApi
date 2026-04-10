@@ -1,9 +1,0 @@
-package org.infnet.guildaApiTP1.dto;
-
-public record FaixaDePrecoAggsDTO(
-        String descricaoFaixaPreco,
-        Double de,
-        Double ate,
-        long totalProdutos
-) {
-}

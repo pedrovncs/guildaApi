@@ -1,12 +1,11 @@
 package org.infnet.guildaApiTP1.tp2.parte1;
 
 import jakarta.persistence.EntityManager;
-import org.infnet.guildaApiTP1.enums.StatusUsuarioEnum;
-import org.infnet.guildaApiTP1.exceptions.EntityNotFoundException;
-import org.infnet.guildaApiTP1.model.audit_schema.*;
-import org.infnet.guildaApiTP1.model.audit_schema.keys.UserRoleId;
-import org.infnet.guildaApiTP1.repository.RoleRepository;
-import org.infnet.guildaApiTP1.repository.UsuarioRepository;
+import org.infnet.guildaApiTP1.audit.enums.StatusUsuarioEnum;
+import org.infnet.guildaApiTP1.audit.model.*;
+import org.infnet.guildaApiTP1.common.exceptions.EntityNotFoundException;
+import org.infnet.guildaApiTP1.audit.repository.RoleRepository;
+import org.infnet.guildaApiTP1.audit.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

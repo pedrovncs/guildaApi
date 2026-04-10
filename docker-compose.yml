@@ -1,0 +1,24 @@
+name: tp3-stack
+services:
+  elasticsearch:
+    image: leogloriainfnet/elastic-tp2-spring:1.0-windows
+    container_name: elasticsearch-tp3
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+
+  postgres-tp3:
+    image: leogloriainfnet/postgres-tp2-spring:2.0-win
+    container_name: postgres-db-tp3
+    environment:
+      - POSTGRES_PASSWORD='password123'
+    ports:
+      - "5432:5432"
+
+  redis-tp3:
+    image: redis:latest
+    container_name: redis-cache-tp3
+    ports:
+      - "6379:6379"

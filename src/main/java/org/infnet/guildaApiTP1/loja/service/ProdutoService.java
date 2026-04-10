@@ -4,7 +4,6 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.aggregations.AggregationRange;
 import co.elastic.clients.elasticsearch._types.aggregations.StringTermsBucket;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
-import co.elastic.clients.elasticsearch.core.search.Hit;
 import lombok.RequiredArgsConstructor;
 import org.infnet.guildaApiTP1.loja.dto.FaixaDePrecoAggsDTO;
 import org.infnet.guildaApiTP1.loja.dto.PrecoMedioDTO;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,9 +21,9 @@ public class ProdutoService {
     private final ElasticsearchClient client;
     private static final String INDEX = "guilda_loja";
 
-    private ProdutoDTO toProdutoDTO(ProdutoDocument p){
+    private ProdutoDTO toProdutoDTO(String id, ProdutoDocument p){
         return new ProdutoDTO(
-                p.getId(),
+                id,
                 p.getCategoria(),
                 p.getDescricao(),
                 p.getNome(),
@@ -36,9 +34,8 @@ public class ProdutoService {
 
     private List<ProdutoDTO> toProdutoDTOList(SearchResponse<ProdutoDocument> response) {
         return response.hits().hits().stream()
-                .map(Hit::source)
-                .filter(Objects::nonNull)
-                .map(this::toProdutoDTO)
+                .filter(hit -> hit.source() != null)
+                .map(hit -> toProdutoDTO(hit.id(), hit.source()))
                 .toList();
     }
 
